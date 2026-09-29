@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --color-navy: #0f172a;
+  --color-indigo: #4f46e5;
+  --color-indigo-hover: #4338ca;
+  --color-indigo-soft: #eef2ff;
+  --color-page: #f8fafc;
+  --color-card: #ffffff;
+  --color-text: #0f172a;
+  --color-muted: #64748b;
+  --color-border: #e2e8f0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #f8fafc;
+  color: var(--color-text);
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* =========================================================
+   GLOBAL LIGHT MODE REFLECTION
+   ========================================================= */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 92% 8%,
+      rgba(96, 165, 250, 0.18) 0%,
+      rgba(147, 197, 253, 0.11) 22%,
+      rgba(255, 255, 255, 0) 52%
+    ),
+    radial-gradient(
+      circle at 4% 40%,
+      rgba(59, 130, 246, 0.10) 0%,
+      rgba(96, 165, 250, 0.055) 30%,
+      rgba(255, 255, 255, 0) 62%
+    ),
+    radial-gradient(
+      ellipse at 48% 58%,
+      rgba(191, 219, 254, 0.12) 0%,
+      rgba(219, 234, 254, 0.065) 32%,
+      rgba(255, 255, 255, 0) 68%
+    ),
+    radial-gradient(
+      ellipse at 52% 88%,
+      rgba(79, 70, 229, 0.065) 0%,
+      rgba(99, 102, 241, 0.035) 30%,
+      rgba(255, 255, 255, 0) 66%
+    ),
+    radial-gradient(
+      ellipse at 72% 100%,
+      rgba(15, 23, 42, 0.035) 0%,
+      rgba(30, 64, 175, 0.025) 30%,
+      rgba(255, 255, 255, 0) 66%
+    ),
+    linear-gradient(
+      135deg,
+      #f8fafc 0%,
+      #ffffff 38%,
+      #f3f7ff 70%,
+      #f8fafc 100%
+    );
+}
+
+/* =========================================================
+   LIGHT MODE — PAGE BACKGROUNDS
+   ========================================================= */
+
+html:not(.dark) #root {
+  background: transparent !important;
+}
+
+html:not(.dark) #root > div {
+  background: transparent !important;
+}
+
+html:not(.dark) main {
+  background-color: transparent !important;
+}
+
+/*
+   Large page sections using slate-50 should reveal
+   the global reflection.
+
+   Small controls/cards are NOT affected.
+*/
+
+html:not(.dark) main > .bg-slate-50,
+html:not(.dark) main > div > .bg-slate-50,
+html:not(.dark) main > div > section.bg-slate-50,
+html:not(.dark) main > section.bg-slate-50 {
+  background-color: transparent !important;
+}
+
+/* Full-width light sections */
+html:not(.dark) section.bg-white {
+  background-color: transparent !important;
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+html.dark body {
+  background: #020617;
+  color: #f8fafc;
+}
+
+html.dark body::before {
+  display: none;
+}
+
+/* =========================================================
+   GENERAL ELEMENTS
+   ========================================================= */
+
+button,
+a,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: #c7d2fe;
+  color: #1e1b4b;
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
